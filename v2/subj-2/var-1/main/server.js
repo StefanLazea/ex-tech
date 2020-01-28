@@ -1,12 +1,11 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const Sequelize = require('sequelize')
-const Op = Sequelize.Op
 
 const mysql = require('mysql2/promise')
 
-const DB_USERNAME = 'stefan'
-const DB_PASSWORD = ''
+const DB_USERNAME = 'root'
+const DB_PASSWORD = 'welcome12#'
 
 mysql.createConnection({
 	user : DB_USERNAME,
@@ -30,7 +29,12 @@ let Author = sequelize.define('author', {
 	email : Sequelize.STRING,
 	address : Sequelize.STRING,
 	age : Sequelize.INTEGER
+},{
+	timestamps : false
 })
+
+
+
 
 const app = express()
 app.use(bodyParser.json())
@@ -42,10 +46,12 @@ app.get('/create', async (req, res) => {
 			let author = new Author({
 				name : 'name ' + i,
 				email : 'name' + i + '@nowhere.com',
-				address : 'some address on ' + i + 'th street'
+				address : 'some address on ' + i + 'th street',
+				age : 30 + i
 			})
 			await author.save()
 		}
+		console.warn('CREATED')
 		res.status(201).json({message : 'created'})
 	}
 	catch(err){
@@ -55,24 +61,14 @@ app.get('/create', async (req, res) => {
 })
 
 app.get('/authors', async (req, res) => {
-	// TODO: implementați funcția
-	// ar trebui să listeze toate cărțile unui autor
-	// ar trebui să permită filtrare bazată pe adresă și email (filterele se numesc address și email și sunt trimise ca query parameters)
-	// TODO: implement the function
-	// should get all authors
-	// should allow for filtering based on address and email (filters are called address and email and are sent as query parameters)
-	
-	let email = req.query.email;
-	let address = req.query.address;
-	
-	await Author.findAll(
-		{
-			where:{
-				email: email,
-				address: address
-			}
-		}
-	).then(result => res.status(200).send(result));
+	try{
+		let authors = await Author.findAll()
+		res.status(200).json(authors)
+	}
+	catch(err){
+		// console.warn(err.stack)
+		res.status(500).json({message : 'server error'})		
+	}
 })
 
 app.post('/authors', async (req, res) => {
@@ -85,6 +81,28 @@ app.post('/authors', async (req, res) => {
 		// console.warn(err.stack)
 		res.status(500).json({message : 'server error'})		
 	}
+})
+
+app.put('/authors/:id', async (req, res) => {
+	// TODO: implementați funcția
+	// adăugați o metoda pentru modificarea autorului
+	// un autor inexistent nu poate fi modificat
+	// numai câmpurile care sunt definite in request trebuie actualizate
+
+	// TODO: implement the function
+	// add the method to modify an author
+	// a non existant author cannot be updated
+	// only defined fields should be updated
+})
+
+app.delete('/authors/:id', async (req, res) => {
+	// TODO: implementați funcția
+	// adaugați o funcție pentru ștergerea unui autor
+	// un autor inexistent nu poate fi șters
+
+	// TODO: implement the function
+	// add the function to delete an author
+	// a non existant author cannot be deleted
 })
 
 app.listen(8080)

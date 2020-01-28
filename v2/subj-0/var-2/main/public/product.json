@@ -1,0 +1,21 @@
+{
+    "name":"numele",
+    "description":"de azi il voi uita",
+    "sizes":[
+        12,
+        23,
+        39
+    ],
+    "inventory":[
+        {
+            "supplierName":"aoa",
+            "quantity":21,
+            "aquisitionPrice":231
+        },
+        {
+            "supplierName":"mamsa",
+            "quantity":231,
+            "aquisitionPrice":231
+        }
+    ]
+}

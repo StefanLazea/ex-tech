@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+    </head>
+    <body>
+        <div id="mine"></div>
+        <script>
+            let getJsonData = async ()=>{
+                let result = await fetch("product.json");
+                let data = await result.json();
+                document.getElementById("mine").innerText = JSON.stringify(data);
+            };
+            
+            window.onLoad = getJsonData();
+        </script>
+    </body>
+</html>

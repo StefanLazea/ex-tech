@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+    </head>
+    <body>
+        <div id="snip"></div>
+        <script type="text/javascript">
+            let getJsonToDiv = async ()=>{
+                let result = await fetch("article.json");
+                let data = await result.json();
+                
+                document.getElementById("snip").innerText = JSON.stringify(data);
+            }
+            
+            window.onLoad = getJsonToDiv();
+        </script>
+    </body>
+</html>

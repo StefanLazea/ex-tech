@@ -1,4 +1,5 @@
 import React from 'react';
+import AddCar from './AddCar';
 
 export class CarList extends React.Component {
     constructor(){
@@ -11,6 +12,7 @@ export class CarList extends React.Component {
     render(){
         return (
             <div>
+                <AddCar />
             </div>
         )
     }
