@@ -16,9 +16,30 @@
  - if the text is not string or the dictionary not an array of strings an exception is thrown (message is TypeError)
 */
 
+function check(dictionary){
+	return dictionary.every(item=>typeof item === "string");
+}
+
 function capitalize(text, dictionary){
 	// TODO: implementați funcția
 	// TODO: implement the function
+	if(Array.isArray(dictionary) && check(dictionary) === true){
+		let arr = text.split(" ");
+		let result = [];
+		arr.forEach(item=>{
+			if(dictionary.includes(item) === true){
+				let string = item.charAt(0).toUpperCase() + item.slice(1);
+				result.push(string);
+			}else{
+				result.push(item);
+			}
+		
+		});
+		return result.join(" ");
+	}else{
+	   throw new Error("TypeError");
+	}
+	
 }
 
 

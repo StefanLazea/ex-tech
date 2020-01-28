@@ -10,10 +10,12 @@
         async function getJson() {
             let response = await fetch("product.json");
             let data = await response.json();
-            console.log(JSON.stringify(data));
+            // console.log(JSON.stringify(data));
+            let element = document.getElementById("content");
+            element.innerText = JSON.stringify(data);
         }
 
-        getJson();
+        window.onLoad = getJson();
     </script>
 </body>
 
