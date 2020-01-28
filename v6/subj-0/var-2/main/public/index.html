@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+</head>
+
+<body>
+    <div id="content"></div>
+    <script>
+        async function getJson() {
+            let response = await fetch("product.json");
+            let data = await response.json();
+            console.log(JSON.stringify(data));
+        }
+
+        getJson();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,19 @@
+{
+    "name": "test",
+    "description": "test",
+    "sizes": [
+        20,
+        23,
+        30
+    ],
+    "inventory": [
+        {
+            "supplierName": "djiasjda",
+            "quantity": 121
+        },
+        {
+            "supplierName": "djiasjda",
+            "quantity": 121
+        }
+    ]
+}
