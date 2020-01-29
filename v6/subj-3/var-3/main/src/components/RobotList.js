@@ -14,34 +14,60 @@ import RobotDetails from './RobotDetails'
 // returning tothe list is done with a cancel button
 
 class RobotList extends Component {
-	constructor(){
+	constructor() {
 		super()
 		this.state = {
-			robots : [],
+			robots: [],
+			showDetails: false,
+			onCancel: true,
+			item: null
 		}
-		
+
 	}
-	componentDidMount(){
+	componentDidMount() {
 		this.store = new RobotStore()
 		this.setState({
-			robots : this.store.getRobots()
+			robots: this.store.getRobots()
 		})
 		this.store.emitter.addListener('UPDATE', () => {
 			this.setState({
-				robots : this.store.getRobots(),
-			})			
+				robots: this.store.getRobots(),
+			})
 		})
 	}
+
+	handleDetails = () => {
+		this.setState({
+			showDetails: !this.state.showDetails,
+			onCancel: false
+		});
+	}
+	handleCancel = () => {
+		this.setState({
+			showDetails: false,
+			onCancel: true
+		});
+	}
+
+
 	render() {
 		return (
-		<div>		 
-			{
+			<div>
+			<button value="cancel" onClick={this.handleCancel}></button>
+
+			{ 
+			this.state.onCancel === true ?
 				this.state.robots.map((e, i) => 
-					<Robot item={e} key={i} />
+					<div key={i}>
+						<Robot item={e} key={i} />
+						<button value="select" onClick={this.handleDetails}></button>
+					</div>
 				)
+			: null
 			}
+		
 		</div>
-	)  		
+		)
 	}
 }
 
