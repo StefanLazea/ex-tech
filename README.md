@@ -2,8 +2,39 @@
 
 ## cheatsheet
 
-# [promise subject](https://github.com/ioanaandreeab/web_tech/blob/master/s5/subj-1/var-7/app.js)  
+# [promise subject](https://github.com/ioanaandreeab/web_tech/blob/master/s5/subj-1/var-7/app.js)    
+
+# [calculate distance](https://github.com/StefanLazea/webtech-assignment1/blob/master/main/app.js)  
+```
+function distance(first, second){
+    if(Array.isArray(first) && Array.isArray(second)){
+        let firstArr = Array.from(new Set(first.filter(x => !second.includes(x))));
+        let secondArr = Array.from(new Set(second.filter(x => !first.includes(x))));
+        let concatArr = firstArr.concat(secondArr);
+        return concatArr.length;
+        
+    }else{
+        throw new Error("InvalidType");
+    }
+}
+```  
+
+# [Replace certain token string](https://github.com/StefanLazea/webtech-assignment2/blob/master/main/app.js)
+```
+if (!input.includes('...')) {
+        return input;
+} else {
+	tokens.forEach(element => {
+	    input = input.replace('...', "${" + `${element.tokenName}` + "}");
+
+	});
+	return input;
+}
+```
+
+
 # [in case you need sequelize info, din cursuri](https://github.com/ioanaandreeab/rest_sequelize)  
+
 # create method from outside the class
 ```
 enhance - function name  
@@ -14,7 +45,7 @@ Widget.prototype.enhance = function (n) {
 
 # Find entity by id
 ```
-    let author = await Author.findById(req.params.id);
+     let author = await Author.findById(req.params.id);
 ```  
 
 # DELELTE /entity using the previous entity
@@ -41,7 +72,7 @@ Widget.prototype.enhance = function (n) {
 	})
 ```  
 
-# body is missing validation  
+# [body validation in post method](https://github.com/StefanLazea/webtech-assignment3/blob/master/main/app.js)
 ```
 	if (Object.keys(req.body).length === 0) {
         return res.status(400).send({ "message": "body is missing" });
@@ -118,6 +149,11 @@ if (!isNaN(pageNo) && !isNaN(pageSize)) {
 ```
 # [React app, din cursuri](https://github.com/StefanLazea/ex-tech/tree/master/c10/simpleapp/src)  
 # [Using state, props and others](https://github.com/StefanLazea/trevBuc/tree/master/front-end/src/components/Reviews)
+
+
+# Simple save robot, from an component  
+[RobotList](https://github.com/StefanLazea/wb-homework-4/blob/master/main/src/components/RobotForm.js)  
+
 
 # Save robot v2
 [RobotList](https://github.com/StefanLazea/ex-tech/blob/master/v6/subj-3/var-3/main/src/components/RobotList.js)
