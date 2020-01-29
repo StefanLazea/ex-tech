@@ -14,7 +14,7 @@ export class AddCar extends React.Component {
         this.setState({[ev.target.name]: ev.target.value});
     }
     
-    AddCar = () => {
+    addCar = () => {
         let car = {
             make: this.state.make,
             model: this.state.model,
@@ -26,11 +26,19 @@ export class AddCar extends React.Component {
     render(){
         return (
             <div>
-                <input type="name" id="make" name="model" onChange={e=>this.onHandleChange}/>
-                <input type="name" id="model" name="model"onChange={e=>this.onHandleChange}/>
-                <input type="name" id="price" name="price"onChange={e=>this.onHandleChange}/>
-                <button type="button" value="add car" onclick = {()=>AddCar()}/>
-                
+                <input type="text" id="make" name="model" onChange={e=>this.onHandleChange(e)}/>
+                <input type="text" id="model" name="model" onChange={e=>this.onHandleChange(e)}/>
+                <input type="text" id="price" name="price" onChange={e=>this.onHandleChange(e)}/>
+                <input type="button" value="add car" onclick = {() => {
+                        this.props.onAdd(
+                             {
+                                make: this.state.make,
+                                model: this.state.model,
+                                price: this.state.price
+                            }
+                        )
+                    
+                }}/>
             </div>
         )
     }
