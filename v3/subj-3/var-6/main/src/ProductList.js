@@ -18,7 +18,7 @@ export class ProductList extends React.Component {
     render() {
         return (
             <div>
-                <AddProduct onAdd={this.add}/>
+                <AddProduct onAdd={this.add} />
             </div>
         )
     }
