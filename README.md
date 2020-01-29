@@ -52,6 +52,21 @@ if(app.locals.products.some(el=>
 }
 ```  
 
+# Pagination  
+```
+	let pageNo = Number(req.query.pageNo);
+	let pageSize = Number(req.query.pageSize);
+
+	if (isNaN(pageNo) && isNaN(pageSize)) {
+		return await Author.findAll().then((authors) => res.status(200).send(authors));
+	}
+
+	if (!isNaN(pageNo) && !isNaN(pageSize)) {
+		let offset = Number(req.query.pageNo) * Number(pageSize);
+		let limit = Number(req.query.pageSize);
+		await Author.findAll({ limit, offset }).then((authors) => res.status(200).send(authors));
+	}
+```
 
 # Front-end  
   

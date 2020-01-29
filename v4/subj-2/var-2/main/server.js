@@ -53,6 +53,7 @@ app.get('/create', async (req, res) => {
 	}
 })
 
+
 app.get('/authors', async (req, res) => {
 	// TODO: adăugați funcția pentru cererea listei autorilor
 	// ar trebui să trimită clientului lista autorilor
@@ -60,10 +61,25 @@ app.get('/authors', async (req, res) => {
 	// TODO: add the function to get all authors
 	// should get all authors
 	// should allow for pagination with a pageNo and a pageSize possibly sent as query parameters
+	let pageNo = Number(req.query.pageNo);
+	let pageSize = Number(req.query.pageSize);
 
-	let offset = req.query.pageNo * 20;
-	let limit = req.query.pageSize;
-	await Author.findAll({ limit, offset }).then((authors) => res.status(200).send(authors));
+	if (isNaN(pageNo) && isNaN(pageSize)) {
+		return await Author.findAll().then((authors) => res.status(200).send(authors));
+	}
+
+	if (!isNaN(pageNo) && !isNaN(pageSize)) {
+		let offset = Number(req.query.pageNo) * Number(pageSize);
+		let limit = Number(req.query.pageSize);
+		await Author.findAll({ limit, offset }).then((authors) => res.status(200).send(authors));
+	}
+
+	if (!isNaN(pageNo) && isNaN(pageSize)) {
+		let offset = Number(req.query.pageNo);
+		let limit = 10;
+		await Author.findAll({ limit, offset }).then((authors) => res.status(200).send(authors));
+	}
+
 })
 
 app.post('/authors', async (req, res) => {
