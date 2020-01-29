@@ -2,6 +2,7 @@
 
 ## cheatsheet
 
+# [promise subject](https://github.com/ioanaandreeab/web_tech/blob/master/s4/subj-1/var-6/app.js)  
 
 # create method from outside the class
 ```
