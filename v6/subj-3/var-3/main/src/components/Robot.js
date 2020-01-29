@@ -6,9 +6,7 @@ class Robot extends Component {
     return (
       <div>
         Hello, my name is {item.name}. I am a {item.type} and weigh {item.mass}
-        <div>
-  					<button value="select" ></button>
-        </div>
+				<button value="select" onClick={this.props.onSelect}>Click me</button>
       </div>
 
     )

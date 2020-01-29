@@ -19,8 +19,7 @@ class RobotList extends Component {
 		this.state = {
 			robots: [],
 			showDetails: false,
-			onCancel: true,
-			item: null
+			index: null
 		}
 
 	}
@@ -36,34 +35,28 @@ class RobotList extends Component {
 		})
 	}
 
-	handleDetails = () => {
+	onSelect = (idx) => {
 		this.setState({
 			showDetails: !this.state.showDetails,
-			onCancel: false
+			index: idx
 		});
 	}
-	handleCancel = () => {
-		this.setState({
-			showDetails: false,
-			onCancel: true
-		});
-	}
-
 
 	render() {
 		return (
 			<div>
-			<button value="cancel" onClick={this.handleCancel}></button>
-
 			{ 
-			this.state.onCancel === true ?
+			this.state.showDetails === false ?
 				this.state.robots.map((e, i) => 
 					<div key={i}>
-						<Robot item={e} key={i} />
-						<button value="select" onClick={this.handleDetails}></button>
+						<Robot item={e} key={i} onSelect={
+							()=>{this.onSelect(i)}
+						} />
 					</div>
 				)
-			: null
+			: <RobotDetails item={this.state.robots[this.state.index]}
+			onSelect={()=>{this.onSelect(-1)}}
+			/>
 			}
 		
 		</div>
