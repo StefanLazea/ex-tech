@@ -7,7 +7,7 @@ export class CarList extends React.Component {
         this.state = {
             cars: []
         };
-        this.add = (car) =>{
+        this.add = (car) => {
             this.state.cars.push(car);
         }
     }  
@@ -19,7 +19,6 @@ export class CarList extends React.Component {
             <div>
                 <AddCar onAdd={this.add}/>
                 {this.state.cars.map((e,i)=><li key ={i}>{e.make} {e.model} {e.price}</li>)}
-
             </div>
         )
     }
