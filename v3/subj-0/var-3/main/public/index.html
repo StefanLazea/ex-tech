@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+</head>
+
+<body>
+    <div id="snip"></div>
+    <script type="text/javascript">
+        let getJson = async() => {
+            let result = await fetch("account.json");
+            let data = await result.json();
+            document.getElementById("snip").innerText = JSON.stringify(data);
+        }
+
+        window.onLoad = getJson();
+    </script>
+</body>
+
+</html>

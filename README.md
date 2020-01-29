@@ -10,7 +10,6 @@ Widget.prototype.enhance = function (n) {
 };
 ```
 
-
 # Find entity by id
 ```
 	let author = await Author.findById(req.params.id);
@@ -36,8 +35,22 @@ Widget.prototype.enhance = function (n) {
 		}).then((result) => {
 			res.status(202).send({ message: "accepted" });
 		})
-```
+```  
 
+# body is missing validation  
+```
+	if (Object.keys(req.body).length === 0) {
+        return res.status(400).send({ "message": "body is missing" });
+    }
+```  
+
+# find in array with SOME
+```
+if(app.locals.products.some(el=>
+                el.name === product.name && el.category === product.category && el.price === product.price)){
+                return res.status(500).send({message: "Product already exists"});
+}
+```  
 
 
 # Front-end  

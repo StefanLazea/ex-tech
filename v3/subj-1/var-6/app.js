@@ -1,5 +1,13 @@
-function applyBonus(employees, bonus){
-    
+function applyBonus(employees, bonus) {
+    return new Promise((expect, reject) => {
+        if (typeof bonus === "number") {
+            // if(bonus < )
+        }
+        else {
+            reject(Error("Invalid bonus"));
+
+        }
+    })
 }
 
 let app = {

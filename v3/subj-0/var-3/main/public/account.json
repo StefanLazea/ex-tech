@@ -1,0 +1,19 @@
+{
+    "accountHolder": "dsdada",
+    "currentBalance": 321231,
+    "iban": "hugy7tf6rd5es4w6e",
+    "currency": "dasdada",
+    "transactions": [{
+            "amount": 2132,
+            "transactionType": "dasda",
+            "beneficiaryName": "toma",
+            "approved": false
+        },
+        {
+            "amount": 2132,
+            "transactionType": "dasda",
+            "beneficiaryName": "toma",
+            "approved": false
+        }
+    ]
+}

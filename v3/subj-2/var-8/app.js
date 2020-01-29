@@ -7,8 +7,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-app.locals.students = [
-    {
+app.locals.students = [{
         name: "Gigel",
         surname: "Popel",
         age: 23
@@ -25,7 +24,43 @@ app.get('/students', (req, res) => {
 });
 
 app.post('/students', (req, res, next) => {
-    res.status(400).json({message: 'Bad request'});
+    if (Object.keys(req.body).length === 0) {
+        return res.status(500).send({ message: "Body is missing" });
+    }
+    if (typeof req.body.name !== "undefined" ||
+        typeof req.body.surname !== "undefined" ||
+        typeof req.body.age !== "undefined") {
+
+        let age = req.body.age;
+        let name = req.body.name;
+        let surname = req.body.surname;
+
+        if (age > 0) {
+            if (app.locals.students.some(el => el.name === name)) {
+                return res.status(500).send({ message: "Student already exists" });
+            }
+            else {
+                const stud = {
+                    name: name,
+                    surname: surname,
+                    age: age
+                }
+                app.locals.students.push(stud);
+                return res.status(201).send({ message: "Created" });
+            }
+
+        }
+        else {
+            return res.status(500).send({ message: "Age should be a positive number" });
+        }
+    }
+    else {
+        return res.status(500).send({ message: "Invalid body format" });
+
+    }
+
+
+
 })
 
 module.exports = app;

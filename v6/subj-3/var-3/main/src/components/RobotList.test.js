@@ -11,7 +11,6 @@ configure({ adapter: new Adapter() })
 it('renders a list of robots with select buttons', () => {
 	const component = mount(<RobotList />)
 	let robot = component.find(Robot).first()
-	console.log(robot, "prostuleeeeeeee")
 	let button = robot.find('[value="select"]').first()
 	expect(button.length).toEqual(1)
 })
