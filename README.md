@@ -14,7 +14,7 @@ Widget.prototype.enhance = function (n) {
 
 # Find entity by id
 ```
-	let author = await Author.findById(req.params.id);
+    let author = await Author.findById(req.params.id);
 ```  
 
 # DELELTE /entity using the previous entity
@@ -27,18 +27,18 @@ Widget.prototype.enhance = function (n) {
 # Update entity
 ``` 
     await Author.update({
-			name: req.body.name,
-			email: req.body.email,
-			address: req.body.address,
-			age: req.body.age
-		}, {
-			where: {
-				id: req.params.id
-			}
+		name: req.body.name,
+		email: req.body.email,
+		address: req.body.address,
+		age: req.body.age
+	}, {
+		where: {
+			id: req.params.id
+		}
 
-		}).then((result) => {
-			res.status(202).send({ message: "accepted" });
-		})
+	}).then((result) => {
+		res.status(202).send({ message: "accepted" });
+	})
 ```  
 
 # body is missing validation  
@@ -51,25 +51,25 @@ Widget.prototype.enhance = function (n) {
 # find in array with SOME
 ```
 if(app.locals.products.some(el=>
-                el.name === product.name && el.category === product.category && el.price === product.price)){
-                return res.status(500).send({message: "Product already exists"});
+	el.name === product.name && el.category === product.category && el.price === product.price)){
+	return res.status(500).send({message: "Product already exists"});
 }
 ```  
 
 # Pagination  
 ```
-	let pageNo = Number(req.query.pageNo);
-	let pageSize = Number(req.query.pageSize);
+let pageNo = Number(req.query.pageNo);
+let pageSize = Number(req.query.pageSize);
 
-	if (isNaN(pageNo) && isNaN(pageSize)) {
-		return await Author.findAll().then((authors) => res.status(200).send(authors));
-	}
+if (isNaN(pageNo) && isNaN(pageSize)) {
+	return await Author.findAll().then((authors) => res.status(200).send(authors));
+}
 
-	if (!isNaN(pageNo) && !isNaN(pageSize)) {
-		let offset = Number(req.query.pageNo) * Number(pageSize);
-		let limit = Number(req.query.pageSize);
-		await Author.findAll({ limit, offset }).then((authors) => res.status(200).send(authors));
-	}
+if (!isNaN(pageNo) && !isNaN(pageSize)) {
+	let offset = Number(req.query.pageNo) * Number(pageSize);
+	let limit = Number(req.query.pageSize);
+	await Author.findAll({ limit, offset }).then((authors) => res.status(200).send(authors));
+}
 ```
 
 # Front-end  
