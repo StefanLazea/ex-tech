@@ -2,7 +2,7 @@
 
 ## cheatsheet
 
-# [promise subject](https://github.com/ioanaandreeab/web_tech/blob/master/s4/subj-1/var-6/app.js)  
+# [promise subject](https://github.com/ioanaandreeab/web_tech/blob/master/s5/subj-1/var-7/app.js)  
 
 # create method from outside the class
 ```
@@ -21,6 +21,8 @@ Widget.prototype.enhance = function (n) {
 ```			
     await author.destroy();
 ```  
+# [examples for GET/PUT](https://github.com/StefanLazea/trevBuc/blob/master/back-end/controllers/reviews.js)
+
 
 # Update entity
 ``` 
@@ -114,7 +116,8 @@ if(app.locals.products.some(el=>
         })
     }
 ```
-# [React app](https://github.com/StefanLazea/ex-tech/tree/master/c10/simpleapp/src)  
+# [React app, din cursuri](https://github.com/StefanLazea/ex-tech/tree/master/c10/simpleapp/src)  
+# [Using state, props and others](https://github.com/StefanLazea/trevBuc/tree/master/front-end/src/components/Reviews)
 
 # Save robot v2
 [RobotList](https://github.com/StefanLazea/ex-tech/blob/master/v6/subj-3/var-3/main/src/components/RobotList.js)
@@ -154,9 +157,7 @@ class RobotDetails extends Component {
     }
 }
 ``` 
-[Robot](https://github.com/StefanLazea/ex-tech/blob/master/v6/subj-3/var-3/main/src/components/Robot.js)
-  
-  
+[Robot](https://github.com/StefanLazea/ex-tech/blob/master/v6/subj-3/var-3/main/src/components/Robot.js)  
 
 ## [Edit robot](https://github.com/StefanLazea/ex-tech/blob/master/v4/subj-3/var-2/main/src/components/Robot.js)
 ```
