@@ -2,6 +2,7 @@
 
 ## cheatsheet
 
+
 # create method from outside the class
 ```
 enhance - function name  
