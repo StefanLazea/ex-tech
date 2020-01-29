@@ -3,7 +3,7 @@
 ## cheatsheet
 
 # [promise subject](https://github.com/ioanaandreeab/web_tech/blob/master/s5/subj-1/var-7/app.js)  
-
+# [in case you need sequelize info, din cursuri](https://github.com/ioanaandreeab/rest_sequelize)  
 # create method from outside the class
 ```
 enhance - function name  
