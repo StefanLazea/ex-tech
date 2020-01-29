@@ -112,27 +112,70 @@ if(app.locals.products.some(el=>
         })
     }
 ```
+# [React app](https://github.com/StefanLazea/ex-tech/tree/master/c10/simpleapp/src)  
 
-# [Edit robot](https://github.com/StefanLazea/ex-tech/blob/master/v4/subj-3/var-2/main/src/components/Robot.js)
+# Save robot v2
+[RobotList](https://github.com/StefanLazea/ex-tech/blob/master/v6/subj-3/var-3/main/src/components/RobotList.js)
+```
+return (
+	<div>
+	{ 
+	this.state.showDetails === false ?
+		this.state.robots.map((e, i) => 
+			<div key={i}>
+				<Robot item={e} key={i} onSelect={
+					()=>{this.onSelect(i)}
+				} />
+			</div>
+		)
+	: <RobotDetails item={this.state.robots[this.state.index]}
+	onSelect={()=>{this.onSelect(-1)}}
+	/>
+	}
+
+	</div>
+	)
+```
+
+[RobotDetails](https://github.com/StefanLazea/ex-tech/blob/master/v6/subj-3/var-3/main/src/components/RobotDetails.js)  
+```
+class RobotDetails extends Component {
+    render() {
+        let { item } = this.props
+        return (
+            <div>
+                Hello, my name is {item.name}. I am a {item.type} and weigh {item.mass}
+      			<button value="cancel" onClick={this.props.onSelect}>Click me</button>
+            </div>
+
+        )
+    }
+}
+``` 
+[Robot](https://github.com/StefanLazea/ex-tech/blob/master/v6/subj-3/var-3/main/src/components/Robot.js)
+  
+  
+
+## [Edit robot](https://github.com/StefanLazea/ex-tech/blob/master/v4/subj-3/var-2/main/src/components/Robot.js)
 ```
 if (!this.state.isEditing) {
-			return (
-				<div>
-					Hello, my name is {item.name}. I am a {item.type} and weigh {item.mass}
-					<input type="button" value="edit" onClick={() => this.setState({
-						isEditing: true
-					})} />
-				</div>
-			)
-		} else {
-			return <div>
-				<input type="text" id="name" name="name" onChange={this.handleChange} value={this.state.name} />
-				<input type="text" id="type" name="type" onChange={this.handleChange} value={this.state.type} />
-				<input type="text" id="mass" name="mass" onChange={this.handleChange} value={this.state.mass} />
-				<input type="button" value="save" onClick={this.save} />
-				<input type="button" value="cancel" onClick={() => this.setState({
-					isEditing: false
-				})} />
-			</div>
-		}
+	return (
+		<div>
+			Hello, my name is {item.name}. I am a {item.type} and weigh {item.mass}
+			<input type="button" value="edit" onClick={() => this.setState({
+				isEditing: true
+			})} />
+		</div>
+	)
+} else {
+	return <div>
+		<input type="text" id="name" name="name" onChange={this.handleChange} value={this.state.name} />
+		<input type="text" id="type" name="type" onChange={this.handleChange} value={this.state.type} />
+		<input type="text" id="mass" name="mass" onChange={this.handleChange} value={this.state.mass} />
+		<input type="button" value="save" onClick={this.save} />
+		<input type="button" value="cancel" onClick={() => this.setState({
+			isEditing: false
+		})} />
+	</div>
+}
 ```
