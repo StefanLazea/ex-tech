@@ -1,16 +1,24 @@
 import React from 'react';
+import AddProduct from './AddProduct';
 
 export class ProductList extends React.Component {
-    constructor(){
+    constructor() {
         super();
         this.state = {
             products: []
         };
     }
 
-    render(){
-        return(
+    add = (product) => {
+        this.setState({
+            products: [...this.state.products, product]
+        })
+    }
+
+    render() {
+        return (
             <div>
+                <AddProduct onAdd={this.add}/>
             </div>
         )
     }

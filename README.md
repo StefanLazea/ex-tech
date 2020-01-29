@@ -81,3 +81,19 @@ if(app.locals.products.some(el=>
 }}
 ></button>
 ```  
+
+# Add in state array  
+```
+	constructor() {
+        super();
+        this.state = {
+            products: []
+        };
+    }
+
+    add = (product) => {
+        this.setState({
+            products: [...this.state.products, product]
+        })
+    }
+```
