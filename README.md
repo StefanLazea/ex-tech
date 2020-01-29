@@ -97,7 +97,7 @@ if(app.locals.products.some(el=>
 ></button>
 ```  
 
-# Add in state array  
+# [Add in state array](https://github.com/StefanLazea/ex-tech/blob/master/v3/subj-3/var-6/main/src/ProductList.js)
 ```
 	constructor() {
         super();
@@ -113,7 +113,7 @@ if(app.locals.products.some(el=>
     }
 ```
 
-# [Edit robot]()
+# [Edit robot](https://github.com/StefanLazea/ex-tech/blob/master/v4/subj-3/var-2/main/src/components/Robot.js)
 ```
 if (!this.state.isEditing) {
 			return (
