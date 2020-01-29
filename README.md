@@ -37,3 +37,34 @@ Widget.prototype.enhance = function (n) {
 			res.status(202).send({ message: "accepted" });
 		})
 ```
+
+
+
+# Front-end  
+  
+- adding a component,  with props  
+```			
+<RobotForm onAdd={this.add} />
+```  
+- this.add defined in constructor as  
+```
+	this.store = new RobotStore()
+		this.add = (robot) => {
+			this.store.addRobot(robot)
+		}
+```  
+
+- button for sending   
+```
+<button type="button" value="add"
+    onClick={() => {
+        this.props.onAdd(
+            {
+                name: this.state.name,
+                type: this.state.type,
+                mass: this.state.mass
+            }
+        )
+}}
+></button>
+```  

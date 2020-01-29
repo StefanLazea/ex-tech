@@ -10,27 +10,31 @@ import RobotForm from './RobotForm'
 // RobotForm should be able to add a robot
 
 class RobotList extends Component {
-	constructor(){
+	constructor() {
 		super()
 		this.state = {
-			robots : []
+			robots: []
+		}
+		this.add = (robot) => {
+			this.store.addRobot(robot);
 		}
 	}
-	componentDidMount(){
+	componentDidMount() {
 		this.store = new RobotStore()
 		this.setState({
-			robots : this.store.getRobots()
+			robots: this.store.getRobots()
 		})
 		this.store.emitter.addListener('UPDATE', () => {
 			this.setState({
-				robots : this.store.getRobots()
-			})			
+				robots: this.store.getRobots()
+			})
 		})
 	}
 	render() {
 		return (
 			<div>
 				 
+				<RobotForm onAdd={this.add}/>
 				{
 					this.state.robots.map((e, i) => 
 						<Robot item={e} key={i} />
