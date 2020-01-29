@@ -112,3 +112,27 @@ if(app.locals.products.some(el=>
         })
     }
 ```
+
+# [Edit robot]()
+```
+if (!this.state.isEditing) {
+			return (
+				<div>
+					Hello, my name is {item.name}. I am a {item.type} and weigh {item.mass}
+					<input type="button" value="edit" onClick={() => this.setState({
+						isEditing: true
+					})} />
+				</div>
+			)
+		} else {
+			return <div>
+				<input type="text" id="name" name="name" onChange={this.handleChange} value={this.state.name} />
+				<input type="text" id="type" name="type" onChange={this.handleChange} value={this.state.type} />
+				<input type="text" id="mass" name="mass" onChange={this.handleChange} value={this.state.mass} />
+				<input type="button" value="save" onClick={this.save} />
+				<input type="button" value="cancel" onClick={() => this.setState({
+					isEditing: false
+				})} />
+			</div>
+		}
+```
