@@ -1,0 +1,21 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A simple app</title>
+    <script>
+        handleClick = async () => {
+            let result = await fetch("http://localhost:8080/cars");
+            console.log(result.json(), "boss");
+        }
+    </script>
+</head>
+
+<body>
+    A simple app
+    <table id="main"></table>
+    <button id="load" onclick="handleClick()">Button</button>
+</body>
+
+</html>
