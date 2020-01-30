@@ -1,0 +1,195 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        const SERVER = 'http://localhost:8080'
+        window.onload = () => {
+
+            let filter = ''
+
+            let filterField = document.getElementById('filter')
+
+            filterField.onchange = (evt) => {
+				filter = evt.target.value
+				loadAll(filter)
+			}
+
+            loadAll(filter)
+
+            async function loadAll(filter){
+                try{
+                    let url = filter ? `${SERVER}/customer-api/customers?filter=${filter}` : `${SERVER}/customer-api/customers`
+                    let response = await fetch(url)
+                    let data = await response.json()
+                    let table = document.getElementById('customerTable')
+                    table.innerHTML = ''
+                    for (let e of data){
+                        let rowContent = `
+                            <td>
+                                <span class=view>
+                                    ${e.name}
+                                </span>
+                                <span class="edit name">
+									<input type=text value=${e.name} />
+								</span>
+                            </td>
+                            <td>
+                                <span class=view>
+                                    ${e.address}
+                                </span> 
+                                <span class="edit address">
+									<input type=text value=${e.address} />
+								</span>
+                            </td>
+                            <td>
+                                <span class=view>
+                                    ${e.email}
+                                </span>
+                                <span class="edit email">
+									<input type=text value=${e.email} />
+								</span>
+                            </td>
+                            <td>
+                                <span class=view>
+                                    ${e.phone}
+                                </span>   
+                                <span class="edit phone">
+									<input type=text value=${e.phone} />
+								</span>
+                            </td>
+                            <td>
+								<span class=view>
+									<input type=button value=edit />
+									<input type=button value=delete />
+								</span>
+								<span class=edit>
+									<input type=button value=save />
+									<input type=button value=cancel />
+								</span>
+							</td>			
+                        `
+                        let row = document.createElement('tr')
+                        row.innerHTML = rowContent
+                        row.dataset.id = e.id
+                        table.append(row)
+                        document.querySelectorAll('.edit').forEach((e) => {
+							e.style.display = 'none'
+                        })
+                        
+                        let deleteButton = document.querySelector(`table tr[data-id="${e.id}"] input[value=delete]`)
+
+						deleteButton.onclick = () => {
+							deleteRow(e.id)
+                        }
+                        
+                        let editButton = document.querySelector(`table tr[data-id="${e.id}"] input[value=edit]`)
+                        editButton.onclick = (evt) => {
+                            let row = evt.target.parentNode.parentNode.parentNode
+                            row.querySelectorAll('.view').forEach((e) => {
+                                e.style.display = 'none'
+                            })
+                            row.querySelectorAll('.edit').forEach((e) => {
+                                e.style.display = 'inline-block'
+                            })
+                        }
+
+                        let cancelButton = document.querySelector(`table tr[data-id="${e.id}"] input[value=cancel]`)
+						cancelButton.onclick = (evt) => {
+							let row = evt.target.parentNode.parentNode.parentNode
+
+							row.querySelectorAll('.edit').forEach((e) => {
+								e.style.display = 'none'
+							})
+							row.querySelectorAll('.view').forEach((e) => {
+								e.style.display = 'inline-block'
+							})
+                        }
+                        
+                        let saveButton = document.querySelector(`table tr[data-id="${e.id}"] input[value=save]`)
+						saveButton.onclick = (evt) => {
+							let row = evt.target.parentNode.parentNode.parentNode
+							let payload = {
+								name : row.querySelector('.name input').value,
+								address : row.querySelector('.address input').value,
+								email : row.querySelector('.email input').value,
+								phone : row.querySelector('.phone input').value,
+							}
+							saveRow(e.id, payload)
+						}
+
+                    }
+                }
+                catch(err){
+                    console.warn(err)
+                }
+            }
+
+            document.getElementById('addButton').onclick = async () => {
+                let payload = {
+                    name : document.getElementById('customerName').value,
+                    address : document.getElementById('customerAddress').value,
+                    email : document.getElementById('customerEmail').value,
+                    phone : document.getElementById('customerPhone').value,
+                }
+                try{
+                    await fetch(`${SERVER}/customer-api/customers`, {
+                        method : 'post',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body : JSON.stringify(payload)
+                    })
+                    loadAll()
+                }
+                catch(err){
+                    console.warn(err)
+                }	
+            }
+
+            async function deleteRow(id){
+				try{
+					await fetch(`${SERVER}/customer-api/customers/${id}`, {
+						method : 'delete'
+					})
+					loadAll(filter)
+				}
+				catch(err){
+					console.warn(err)
+				}	
+			}
+
+			async function saveRow(id, payload){
+				try{
+					await fetch(`${SERVER}/customer-api/customers/${id}`, {
+						method : 'put',
+						headers: {
+							'Content-Type': 'application/json'
+						},
+						body : JSON.stringify(payload)
+					})
+					loadAll(filter)
+				}
+				catch(err){
+					console.warn(err)
+				}	
+			}
+        }
+    </script>
+</head>
+<body>
+    <input type="text" id="filter" placeholder="filter here">
+    <table id=customerTable></table>
+    <form>
+        <label for="customerName">Name</label>
+        <input type="text" id="customerName">
+        <label for="customerAddress">Address</label>
+        <input type="text" id="customerAddress">
+        <label for="customerEmail">Email</label>
+        <input type="text" id="customerEmail">
+        <label for="customerPhone">Phone</label>
+        <input type="text" id="customerPhone">
+        <input type="button" id="addButton" value="+">
+    </form>
+</body>
+</html>

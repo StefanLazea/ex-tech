@@ -1,0 +1,39 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A simple app</title>
+    <script>
+     function reqListenter(){
+                console.log(this.responseText);
+                var messages =JSON.parse(this.responseText); //this e obiectul XMLHTTPREQUEST
+                console.log(messages);
+                // don t do this in 2019
+                
+                var htmlTable = document.getElementById('main');
+                htmlTable.innerHTML = JSON.stringify(messages);
+                for( var i=0; i<messages.length;i++){
+                    
+                }
+                
+                htmlTable =htmlTable + '</table>'
+                
+                document.getElementById("content").innerHTML=htmlTable;
+            }
+            
+            var oReq = new XMLHttpRequest();
+            oReq.addEventListener("load",reqListenter);
+            //http_metod
+            oReq.open("GET","/cars");
+            oReq.send();
+ handleClick = async () =>{
+     
+ }
+    </script>
+</head>
+<body>
+    A simple app
+    <table id='main'></table>
+    <button id="load" onclick="handleClick()"></button>
+</body>
+</html>
