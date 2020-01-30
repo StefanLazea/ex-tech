@@ -4,6 +4,9 @@
 
 # [promise subject](https://github.com/ioanaandreeab/web_tech/blob/master/s5/subj-1/var-7/app.js)    
 
+# [dictionary](https://github.com/StefanLazea/ex-tech/blob/master/v6/subj-1/var-3/main/app.js)
+
+
 # [calculate distance](https://github.com/StefanLazea/webtech-assignment1/blob/master/main/app.js)  
 ```
 function distance(first, second){
