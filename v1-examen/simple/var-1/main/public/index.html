@@ -1,0 +1,63 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A simple app</title>
+    <script>
+        window.onload = async() => {
+            let btn = document.getElementById('reload')
+            let filter = document.getElementById('filter')
+            let filterValue = "";
+
+            // filter.onchange = (evt) => {
+            //     filter = evt.target.value
+            //     load(filter);
+            // }
+
+            let tbl = document.getElementById('main')
+
+            let load = async(filter) => {
+                console.log(filter);
+
+                let url = filter ? `http://54.93.252.109:8080/cars?filter=${filter}` : `http://54.93.252.109:8080/cars`
+                let response = await fetch(url)
+                let data = await response.json()
+                console.log(data);
+
+                try {
+                    let rows = data.map((e) => `
+                        <tr>
+                            <td>
+                                ${e.name}
+                            </td>
+                            <td>
+                                ${e.color}
+                            </td>
+                        </tr>
+                    `)
+                    tbl.innerHTML = rows.join()
+                }
+                catch (err) {
+                    console.warn(err)
+                }
+            }
+
+            let btnReload = document.getElementById("reload");
+            btnReload.addEventListener("click", (evt) => {
+                filterValue = filter.value;
+                console.log(filter.value);
+                load(filter.value);
+            })
+        }
+    </script>
+</head>
+
+<body>
+    A simple app
+    <input type="text" placeholder="filter" id="filter" />
+    <table id="main"></table>
+    <button id="reload">Reload</button>
+</body>
+
+</html>
