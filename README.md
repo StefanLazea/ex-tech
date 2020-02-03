@@ -52,41 +52,22 @@
 	let firstArr = Array.from(new Set(first.filter(x => !second.includes(x))));
 	```
 	[**Usage here**](https://gist.github.com/StefanLazea/3a7e8a194cff02d1d6b8726ca11e7f29.js)
+	
+	
+- replace certain words as the token '...' with the value from element  
+	```
+	if (!input.includes('...')) {
+		return input;
+	} else {
+		tokens.forEach(element => {
+		    input = input.replace('...', "${" + `${element.tokenName}` + "}");
 
-
-# [promise subject](https://github.com/ioanaandreeab/web_tech/blob/master/s5/subj-1/var-7/app.js)    
-
-# [dictionary](https://github.com/StefanLazea/ex-tech/blob/master/v6/subj-1/var-3/main/app.js)
-
-
-# [calculate distance](https://github.com/StefanLazea/webtech-assignment1/blob/master/main/app.js)  
-```
-function distance(first, second){
-    if(Array.isArray(first) && Array.isArray(second)){
-        let firstArr = Array.from(new Set(first.filter(x => !second.includes(x))));
-        let secondArr = Array.from(new Set(second.filter(x => !first.includes(x))));
-        let concatArr = firstArr.concat(secondArr);
-        return concatArr.length;
-        
-    }else{
-        throw new Error("InvalidType");
-    }
-}
-```  
-
-# [Replace certain token string](https://github.com/StefanLazea/webtech-assignment2/blob/master/main/app.js)
-```
-if (!input.includes('...')) {
-        return input;
-} else {
-	tokens.forEach(element => {
-	    input = input.replace('...', "${" + `${element.tokenName}` + "}");
-
-	});
-	return input;
-}
-```
-
+		});
+		return input;
+	}
+	```  
+	[**Usage here**](https://github.com/StefanLazea/webtech-assignment2/blob/master/main/app.js)
+	
 
 # [in case you need sequelize info, din cursuri](https://github.com/ioanaandreeab/rest_sequelize)  
 
