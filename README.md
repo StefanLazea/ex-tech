@@ -224,17 +224,17 @@ if (!isNaN(pageNo) && !isNaN(pageSize)) {
 	
 	- add inputs and cancel button to change the state of **isEditing**:  
      
-       ```
-       return <div>
-		<input type="text" id="name" name="name" onChange={this.handleChange} value={this.state.name} />
-		<input type="text" id="employees" name="employees" onChange={this.handleChange} value={this.state.employees} />
-		<input type="text" id="revenue" name="revenue" onChange={this.handleChange} value={this.state.revenue} />
-		<input type="button" value="save" onClick={this.save} />
-		<input type="button" value="cancel" onClick={() => this.setState({
-					isEditing: false
-				})} />
-	   </div>
-       ```
+	       ```
+	       return <div>
+			<input type="text" id="name" name="name" onChange={this.handleChange} value={this.state.name} />
+			<input type="text" id="employees" name="employees" onChange={this.handleChange} value={this.state.employees} />
+			<input type="text" id="revenue" name="revenue" onChange={this.handleChange} value={this.state.revenue} />
+			<input type="button" value="save" onClick={this.save} />
+			<input type="button" value="cancel" onClick={() => this.setState({
+						isEditing: false
+					})} />
+		   </div>
+	       ```
 
 
 [**Complete example here**](https://gist.github.com/StefanLazea/cb2fbd682e93bfb03df6d0709d9a4aa6.js)
