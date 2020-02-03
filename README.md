@@ -217,10 +217,11 @@ if (!isNaN(pageNo) && !isNaN(pageSize)) {
 			<div></div>
 		      )
 		    }
-	  }
-	 
+	     } 
 	``` 
-     - add inputs and cancel button to change the state of **isEditing**:
+	
+    - add inputs and cancel button to change the state of **isEditing**:  
+     
        ```
        return <div>
 		<input type="text" id="name" name="name" onChange={this.handleChange} value={this.state.name} />
