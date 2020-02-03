@@ -26,7 +26,8 @@
 
 			});
 			return result.join(" ");
-	```
+	```  
+	[**Usage here**](https://gist.github.com/StefanLazea/72283ba8099f60b7c360f383a44798ad.js)
 
 
 # [promise subject](https://github.com/ioanaandreeab/web_tech/blob/master/s5/subj-1/var-7/app.js)    
