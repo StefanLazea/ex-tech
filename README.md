@@ -5,12 +5,12 @@
 
 ### Working with objects  
 - returning a Promise  
-``` 
+	``` 
 	return new Promise((resolve,reject)=>{ 
 	// error
 	// reject(new Error("Invalid discount"));      
 	}
-```
+	```
 
 ### Working with arrays
 
@@ -23,17 +23,24 @@
 	
 - given a text separated with spaces, and a dictionary that contains strings. This snippet creates a new array if the current word from the text is also in the dictionary.
 	```
-			let arr = text.split(" ");
-			let result = [];
-			arr.forEach(item=>{
-				if(dictionary.includes(item) === true){
-					result.push(item);
-				}
+	let arr = text.split(" ");
+	let result = [];
+	arr.forEach(item=>{
+		if(dictionary.includes(item) === true){
+			result.push(item);
+		}
 
-			});
-			return result.join(" ");
+	});
+	return result.join(" ");
 	```  
 	[**Usage here**](https://gist.github.com/StefanLazea/72283ba8099f60b7c360f383a44798ad.js)
+	
+	
+- create a new array with unique elements
+	```
+	let firstArr = Array.from(new Set(first.filter(x => !second.includes(x))));
+	```
+	[**Usage here**](https://gist.github.com/StefanLazea/3a7e8a194cff02d1d6b8726ca11e7f29.js)
 
 
 # [promise subject](https://github.com/ioanaandreeab/web_tech/blob/master/s5/subj-1/var-7/app.js)    
