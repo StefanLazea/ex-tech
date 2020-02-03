@@ -4,7 +4,13 @@
 
 
 ### Working with objects  
-
+- returning a Promise  
+``` 
+	return new Promise((resolve,reject)=>{ 
+	// error
+	// reject(new Error("Invalid discount"));      
+	}
+```
 
 ### Working with arrays
 
