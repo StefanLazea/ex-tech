@@ -4,6 +4,17 @@
 
 
 ### Working with objects  
+- declare an Object: ``` let result = {}; ```
+- looping through an Object 
+	```
+	const keys = Object.keys(result);
+	for (const key of keys) {
+	}
+	```  
+- get the size of an Object  
+	```
+	const size = Object.keys(result).length;
+	```
 - returning a Promise  
 	``` 
 	return new Promise((resolve,reject)=>{ 
