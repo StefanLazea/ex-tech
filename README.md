@@ -1,5 +1,5 @@
 # ex-tech
-
+### **use [this gitbook](https://lazeastefan.gitbook.io/cheatsheet/)**
 ## cheatsheet
 
 
