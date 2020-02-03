@@ -137,59 +137,105 @@ if (!isNaN(pageNo) && !isNaN(pageSize)) {
 ```
 
 # Front-end  
-  
-- adding a component,  with props  
+  - adding a component into another one,  with props  
 ```			
-<RobotForm onAdd={this.add} />
-```  
-- this.add defined in constructor as  
-```
-	this.store = new RobotStore()
-		this.add = (robot) => {
-			this.store.addRobot(robot)
-		}
+       <RobotForm onAdd={this.add} />
 ```  
 
-- button for sending   
+- declaration of state in constructor of your React class:
 ```
-<button type="button" value="add"
-    onClick={() => {
-        this.props.onAdd(
-            {
-                name: this.state.name,
-                type: this.state.type,
-                mass: this.state.mass
-            }
-        )
-}}
-></button>
-```  
-
-# [Add in state array](https://github.com/StefanLazea/ex-tech/blob/master/v3/subj-3/var-6/main/src/ProductList.js)
-```
-	constructor() {
-        super();
         this.state = {
             products: []
         };
-    }
+```
 
-    add = (product) => {
+- set state:
+```
         this.setState({
             products: [...this.state.products, product]
         })
-    }
 ```
+
+- this.add defined in constructor as a function that use RobotStore for saving 
+```
+	this.store = new RobotStore();
+	this.add = (robot) => {
+		this.store.addRobot(robot)
+	}
+```  
+
+[Similar content regarding state & add component](https://gist.github.com/StefanLazea/cf391e809c8066eee804ff2754a8952b.js)
+
+
+- onClick the button saves as props an object that is required for add   
+```
+		<button type="button" value="add"
+		    onClick={() => {
+			this.props.onAdd(
+			    {
+				name: this.state.name,
+				type: this.state.type,
+				mass: this.state.mass
+			    }
+			)
+		}}
+></button>
+``` 
 # [React app, din cursuri](https://github.com/StefanLazea/ex-tech/tree/master/c10/simpleapp/src)  
-# [Using state, props and others](https://github.com/StefanLazea/trevBuc/tree/master/front-end/src/components/Reviews)
-
-
 # Simple save robot, from an component  
 [RobotList](https://github.com/StefanLazea/wb-homework-4/blob/master/main/src/components/RobotForm.js)  
 
+- save the props: ```    let { item } = this.props; ```
+- handleChange - in order to set the state of an input given a certain event:
+```
+              handleChange = (evt) => {
+                    this.setState({
+                        [evt.target.name]: evt.target.value
+                    });
+              }
+```
 
-# Save robot v2
-[RobotList](https://github.com/StefanLazea/ex-tech/blob/master/v6/subj-3/var-3/main/src/components/RobotList.js)
+- in order to show 2 different things in a component; one state is for editing and the other shows the details
+   - first init a boolean variable in state:  
+       ```
+                this.state = {
+                     isEditing: false,
+                     name: item.name,
+                     employees: item.employees,
+                     revenue: item.revenue,
+                }
+       ```
+    - than in the render area you can check if the **isEditing**  
+       ``` 
+    	render() {
+		    let { item } = this.props
+		    if (this.state.isEditing) {
+		       return <div></div>
+		    }
+		    else {
+		      return (
+			<div></div>
+		      )
+		    }
+	  }
+	 
+	``` 
+     - add inputs and cancel button to change the state of **isEditing**:
+       ```
+       return <div>
+		<input type="text" id="name" name="name" onChange={this.handleChange} value={this.state.name} />
+		<input type="text" id="employees" name="employees" onChange={this.handleChange} value={this.state.employees} />
+		<input type="text" id="revenue" name="revenue" onChange={this.handleChange} value={this.state.revenue} />
+		<input type="button" value="save" onClick={this.save} />
+		<input type="button" value="cancel" onClick={() => this.setState({
+					isEditing: false
+				})} />
+	   </div>
+       ```
+
+
+[**Complete example here**](https://gist.github.com/StefanLazea/cb2fbd682e93bfb03df6d0709d9a4aa6.js)
+
 ```
 return (
 	<div>
@@ -211,7 +257,7 @@ return (
 	)
 ```
 
-[RobotDetails](https://github.com/StefanLazea/ex-tech/blob/master/v6/subj-3/var-3/main/src/components/RobotDetails.js)  
+[**RobotDetails**](https://github.com/StefanLazea/ex-tech/blob/master/v6/subj-3/var-3/main/src/components/RobotDetails.js)  
 ```
 class RobotDetails extends Component {
     render() {
