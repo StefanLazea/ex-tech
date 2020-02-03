@@ -196,31 +196,33 @@ if (!isNaN(pageNo) && !isNaN(pageSize)) {
 ```
 
 - in order to show 2 different things in a component; one state is for editing and the other shows the details
-   - first init a boolean variable in state:  
-       ```
-                this.state = {
-                     isEditing: false,
-                     name: item.name,
-                     employees: item.employees,
-                     revenue: item.revenue,
-                }
-       ```
-    - than in the render area you can check if the **isEditing**  
+	- first init a boolean variable in state:   
+		```
+		this.state = {
+			     isEditing: false,
+			     name: item.name,
+			     employees: item.employees,
+			     revenue: item.revenue
+			     }		
+		```
+
+	- than in the render area you can check if the **isEditing**  
+
        ``` 
-    	render() {
-		    let { item } = this.props
-		    if (this.state.isEditing) {
-		       return <div></div>
-		    }
-		    else {
-		      return (
-			<div></div>
-		      )
-		    }
-	     } 
+		render() {
+			    let { item } = this.props
+			    if (this.state.isEditing) {
+			       return <div></div>
+			    }
+			    else {
+			      return (
+				<div></div>
+			      )
+			    }
+		     } 
 	``` 
 	
-    - add inputs and cancel button to change the state of **isEditing**:  
+	- add inputs and cancel button to change the state of **isEditing**:  
      
        ```
        return <div>
