@@ -2,6 +2,33 @@
 
 ## cheatsheet
 
+
+### Working with objects  
+
+
+### Working with arrays
+
+- Check the type of arrays to be "string"  
+	```
+	function check(dictionary){
+		return dictionary.every(item=>typeof item === "string");
+	}
+	```
+	
+- given a text separated with spaces, and a dictionary that contains strings. This snippet creates a new array if the current word from the text is also in the dictionary.
+	```
+			let arr = text.split(" ");
+			let result = [];
+			arr.forEach(item=>{
+				if(dictionary.includes(item) === true){
+					result.push(item);
+				}
+
+			});
+			return result.join(" ");
+	```
+
+
 # [promise subject](https://github.com/ioanaandreeab/web_tech/blob/master/s5/subj-1/var-7/app.js)    
 
 # [dictionary](https://github.com/StefanLazea/ex-tech/blob/master/v6/subj-1/var-3/main/app.js)
