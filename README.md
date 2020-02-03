@@ -66,31 +66,35 @@
 		return input;
 	}
 	```  
-	[**Usage here**](https://github.com/StefanLazea/webtech-assignment2/blob/master/main/app.js)
+	[**Usage here**](https://github.com/StefanLazea/webtech-assignment2/blob/master/main/app.js)  
 	
+- find in array with SOME
+	```
+	if(app.locals.products.some(el=>
+		el.name === product.name && el.category === product.category && el.price === product.price)){
+		return res.status(500).send({message: "Product already exists"});
+	}
+	```  
+	
+### REST
 
-# [in case you need sequelize info, din cursuri](https://github.com/ioanaandreeab/rest_sequelize)  
 
-# create method from outside the class
-```
-enhance - function name  
-Widget.prototype.enhance = function (n) {
-		
-};
-```
-
-# Find entity by id
+- find entity by id
 ```
      let author = await Author.findById(req.params.id);
 ```  
-
-# DELELTE /entity using the previous entity
+  
+- get all from db  
+```
+     await Reviews.findAll().then((allReviews) => reviewsFound = allReviews);
+```   
+  
+- delete after findById
 ```			
     await author.destroy();
 ```  
-# [examples for GET/PUT](https://github.com/StefanLazea/trevBuc/blob/master/back-end/controllers/reviews.js)
 
-
+- update an entity  
 # Update entity
 ``` 
     await Author.update({
@@ -102,25 +106,18 @@ Widget.prototype.enhance = function (n) {
 		where: {
 			id: req.params.id
 		}
-
 	}).then((result) => {
 		res.status(202).send({ message: "accepted" });
 	})
 ```  
+
+
 
 # [body validation in post method](https://github.com/StefanLazea/webtech-assignment3/blob/master/main/app.js)
 ```
 	if (Object.keys(req.body).length === 0) {
         return res.status(400).send({ "message": "body is missing" });
     }
-```  
-
-# find in array with SOME
-```
-if(app.locals.products.some(el=>
-	el.name === product.name && el.category === product.category && el.price === product.price)){
-	return res.status(500).send({message: "Product already exists"});
-}
 ```  
 
 # Pagination  
