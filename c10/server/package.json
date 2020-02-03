@@ -6,6 +6,6 @@
     "express": "^4.17.1",
     "fbemitter": "^2.1.1",
     "mysql2": "^1.5.1",
-    "sequelize": "^4.22.11"
+    "sequelize": "^5.15.1"
   }
 }
